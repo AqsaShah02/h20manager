@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reservoirs.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a href="/">Home</a></li>
+            <li class="navbar"><a href="/forecast">Forecast</a></li>
+            <li class="navbar"><a href="/reservoirs">Reservoirs</a></li>
+            <li class="navbar"><a href="/footprint">Footprint</a></li>
+            <li class="navbar"><a href="/analytics">Analytics</a></li>
+        </ul>
+    </nav>
+    
+    
+    <div class="dashboard">
+        <div class="reservoir-card" onclick="redirectToTank1()">
+            <h3>Reservoir 1</h3>
+            <div class="reservoir-bar" style="width: 70%;"> 
+                <span>70%</span> <!-- Show percentage on the bar -->
+            </div>
+            <p>Water Level: 70%</p>
+            <p>Capacity: 5000L</p>
+            <p>Current Level: 3500L</p>
+            <p class="reservoir-status active">Status: Active</p>
+        </div>
+    
+        <div class="reservoir-card">
+            <h3>Reservoir 2</h3>
+            <div class="reservoir-bar" style="width: 40%;"> 
+                <span>40%</span> <!-- Show percentage on the bar -->
+            </div>
+            <p>Water Level: 40%</p>
+            <p>Capacity: 3000L</p>
+            <p>Current Level: 1200L</p>
+            <p class="reservoir-status inactive">Status: Inactive</p>
+        </div>
+    
+        <div class="reservoir-card">
+            <h3>Reservoir 3</h3>
+            <div class="reservoir-bar" style="width: 85%;"> 
+                <span>85%</span> <!-- Show percentage on the bar -->
+            </div>
+            <p>Water Level: 85%</p>
+            <p>Capacity: 10000L</p>
+            <p>Current Level: 8500L</p>
+            <p class="reservoir-status active">Status: Active</p>
+        </div>
+        <div class="reservoir-card">
+            <h3>Reservoir 3</h3>
+            <div class="reservoir-bar" style="width: 85%;"> 
+                <span>85%</span> <!-- Show percentage on the bar -->
+            </div>
+            <p>Water Level: 85%</p>
+            <p>Capacity: 10000L</p>
+            <p>Current Level: 8500L</p>
+            <p class="reservoir-status active">Status: Active</p>
+        </div>
+    </div>
+    
+    
+    <h1>Connect to the Tank</h1>
+    <button id="connectButton">Connect the Tank</button>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("connectButton").onclick = function() {
+            fetch('/connect-tank', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("message").innerText = data.message;
+                    if (data.success) {
+                        // Trigger the Pygame script if connection is successful
+                        window.location.href = '/start-tank';  // Redirect to another route that runs the Pygame script
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("message").innerText = "Error connecting to tank.";
+                });
+        }
+    </script>
+</body>   
+</html> 

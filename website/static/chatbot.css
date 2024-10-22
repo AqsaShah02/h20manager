@@ -1,0 +1,121 @@
+/* Default Home Styles */
+body {
+    background-color: black; /* Fallback color */
+    background-size: cover; /* Cover the entire body */
+    background-position: 50% 6%; /* Center the image shifted down slightly */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    margin: 0; /* Remove default margin */
+    height: 100vh; 
+    font-family: sans-serif;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #000000; /* Background color of the navbar */
+    overflow: hidden; /* Clear floats */
+    font-size: xx-large;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Distribute space evenly */
+}
+
+nav ul li {
+    float: left; /* Align items horizontally */
+}
+
+nav ul li a {
+    display: block; /* Make the entire area clickable */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 14px 20px; /* Add some padding */
+    text-decoration: none; /* Remove underline */
+}
+
+body {
+    background-color: #2c2f33;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+nav {
+    background-color: #23272a;
+    padding: 10px;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav ul li {
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #99aab5;
+    text-decoration: none;
+    font-weight: bold;
+}
+.chatbot-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #23272a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+    background-color: #2f3136;
+    padding: 10px;
+    border-radius: 8px;
+}
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.message.bot {
+    background-color: #7289da;
+    text-align: left;
+}
+.message.user {
+    background-color: #99aab5;
+    text-align: right;
+}
+.chat-input-container {
+    display: flex;
+    margin-top: 20px;
+}
+.chat-input-container input[type="file"] {
+    margin-right: 10px;
+    color: white;
+}
+button {
+    background-color: #7289da;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #99aab5;
+}
+.graph-container img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+}

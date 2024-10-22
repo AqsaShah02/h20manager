@@ -1,0 +1,125 @@
+/*home*/
+body {
+    background-color: white; /* Fallback color */
+   /* Relative path to background image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    margin: 0; /* Remove default margin */
+    height: 100vh; 
+    background-position: top left; /* Shows the top-left corner */
+    background-position: 50% 6%; /* Shows the center of the image shifted down slightly */
+    font-family: sans-serif;}
+  
+  /* Navigation Bar Styles */
+  nav {
+  background-color: #000000; /* Background color of the navbar */
+  overflow: hidden; /* Clear floats */
+  font-size: xx-large;
+  width: 100%;
+  }
+  
+  nav ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;/* Remove default padding */
+  }
+  
+  nav ul li {
+  float: left; /* Align items horizontally */
+  }
+  
+  nav ul li a {
+  display: block; /* Make the entire area clickable */
+  color: white; /* Text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  }
+
+/* Signup Form Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px);
+    background-color: #010101; /* Dark background */
+}
+
+.form-box {
+    background-color: #2d2d2d; /* Darker grey form background */
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow with soft edges */
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    border: 1px solid #444; /* Dark border for the form box */
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+    color: #ffffff; /* White text for the heading */
+    font-size: 24px;
+    font-weight: 600; /* Slightly bold */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #cccccc; /* Lighter grey label color */
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #555; /* Light grey border */
+    border-radius: 5px;
+    background-color: #333; /* Dark input background */
+    color: #ffffff; /* White text for the input */
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #007BFF; /* Blue border when focused */
+    background-color: #444; /* Slightly lighter background on focus */
+}
+
+.btn {
+    background-color: #007BFF; /* Blue button */
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease; /* Smooth color change */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+p {
+    font-size: 14px;
+    color: #cccccc; /* Light grey text for the paragraph */
+}
+
+a {
+    color: #007BFF; /* Blue links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}

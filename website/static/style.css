@@ -1,0 +1,184 @@
+/*home*/
+body {
+    background-color: black; /* Fallback color */
+    background-image: url('bgh20.jpg'); /* Relative path to background image */
+    background-size: cover; /* Cover the entire body */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    margin: 0; /* Remove default margin */
+    height: 100vh; 
+    background-position: top left; /* Shows the top-left corner */
+    background-position: 50% 6%; /* Shows the center of the image shifted down slightly */
+    font-family: sans-serif;}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #000000; /* Background color of the navbar */
+    overflow: hidden; /* Clear floats */
+    font-size: xx-large;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+    float: left; /* Align items horizontally */
+}
+
+nav ul li a {
+    display: block; /* Make the entire area clickable */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 14px 20px; /* Add some padding */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Change color on hover */
+nav ul li a:hover {
+    background-color: #575757; /* Darker background on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 600px) {
+    nav ul li {
+        float: none; /* Stack items vertically */
+        width: 100%; /* Full width */
+    }
+}
+
+
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+p {
+    color: darkgreen;
+    font-size: 18px;
+    text-align: center;
+}
+
+.navbar{
+    margin-left: 115px;
+    margin-right: 10px;
+}
+
+.hero-content {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between title and features */
+    padding: 388px;
+    margin-top: -267px;
+}
+
+h1 {
+    color: white; /* Text color for h1 */
+    font-size: 48px; /* Adjust size as needed */
+    margin: 0; /* Remove default margin */
+}
+
+.features {
+    text-align: right;
+    text-align-last: left;
+}
+
+.features p {
+    margin: 0; /* Remove default margin */
+    color: white; /* Text color for features */
+    font-size: 18px; /* Adjust size as needed */
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    margin-top: -251px;
+
+}
+/* General button styling */
+.btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    background-color: #222;
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+/* Button hover effects */
+.btn:hover {
+    background-color: #444;
+    transform: translateY(-5px); /* Slight movement for a floating effect */
+}
+
+/* Button active effect (when clicked) */
+.btn:active {
+    background-color: #666;
+    transform: translateY(0px); /* Reset to normal position */
+}
+
+/* Styling the navbar */
+.navbar1 {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+/* General button styling for the logout button */
+.logout {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #222; /* Dark background */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 250px;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Hover effects */
+.logout:hover {
+    background-color: #444; /* Darker gray on hover */
+    transform: translateY(-5px); /* Slight floating effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Active (clicked) effect */
+.logout:active {
+    background-color: #666;
+    transform: translateY(0px); /* Reset to normal position when clicked */
+}
+
+/* Icon styling */
+.logout i {
+    margin-left: 10px; /* Space between text and icon */
+    transition: transform 0.3s ease;
+}
+
+/* Icon movement on hover */
+.logout:hover i {
+    transform: translateX(5px); /* Icon slides to the right on hover */
+}
+
+/* Adding some padding to the navbar itself */
+.navbar1 {
+    padding-right: 20px;
+}

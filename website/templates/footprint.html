@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprints Calculation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='footprint.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a href="/">Home</a></li>
+            <li class="navbar"><a href="/forecast">Forecast</a></li>
+            <li class="navbar"><a href="/reservoirs">Reservoirs</a></li>
+            <li class="navbar"><a href="/footprint">Footprint</a></li>
+            <li class="navbar"><a href="/analytics">Analytics</a></li>
+        </ul>
+    </nav>
+
+    <h1>Water Footprints Calculation</h1>
+    
+    <div class="container">
+        <button class="btn-reservoir" onclick="connectReservoir()">Connect Reservoir</button>
+
+        <div class="text"><br>Enter water usage per month for 2024 (in liters)</div>
+
+        <div class="grid">
+            <input type="text" id="jan" class="month-input" placeholder="Jan">
+            <input type="text" id="feb" class="month-input" placeholder="Feb">
+            <input type="text" id="mar" class="month-input" placeholder="Mar">
+            <input type="text" id="apr" class="month-input" placeholder="Apr">
+            <input type="text" id="may" class="month-input" placeholder="May">
+            <input type="text" id="jun" class="month-input" placeholder="Jun">
+            <input type="text" id="jul" class="month-input" placeholder="Jul">
+            <input type="text" id="aug" class="month-input" placeholder="Aug">
+            <input type="text" id="sept" class="month-input" placeholder="Sept">
+            <input type="text" id="oct" class="month-input" placeholder="Oct">
+            <input type="text" id="nov" class="month-input" placeholder="Nov">
+            <input type="text" id="dec" class="month-input" placeholder="Dec">
+        </div>
+
+        <button class="btn-analyze" onclick="analyzeData()">Analyze</button>
+    </div>
+
+    <script>
+        function connectReservoir() {
+            window.location.href = '/reservoirs';
+        }
+
+        function analyzeData() {
+            const data = {
+                jan: document.getElementById('jan').value,
+                feb: document.getElementById('feb').value,
+                mar: document.getElementById('mar').value,
+                apr: document.getElementById('apr').value,
+                may: document.getElementById('may').value,
+                jun: document.getElementById('jun').value,
+                jul: document.getElementById('jul').value,
+                aug: document.getElementById('aug').value,
+                sept: document.getElementById('sept').value,
+                oct: document.getElementById('oct').value,
+                nov: document.getElementById('nov').value,
+                dec: document.getElementById('dec').value
+            };
+
+            // Validate all inputs to ensure they are numbers
+            for (const month in data) {
+                if (data[month] && isNaN(data[month])) {
+                    alert(`${month.toUpperCase()} must be a number.`);
+                    return;
+                }
+            }
+
+            // Send data to backend to generate a graph
+            fetch('/analyze-water-usage', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect to analytics page with the graph data
+                    localStorage.setItem('waterUsageGraph', data.graph);
+                    window.location.href = '/analytics';
+                } else {
+                    alert('Error generating graph');
+                }
+            })
+            .catch(err => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>

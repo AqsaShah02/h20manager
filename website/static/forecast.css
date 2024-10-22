@@ -1,0 +1,102 @@
+/*home*/
+body {
+    background-color: black; /* Fallback color */
+    font-family: sans-serif;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #000000; /* Background color of the navbar */
+    overflow: hidden; /* Clear floats */
+    font-size: xx-large;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;/* Remove default padding */
+}
+
+nav ul li {
+    float: left; /* Align items horizontally */
+}
+
+nav ul li a {
+    display: block; /* Make the entire area clickable */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 14px 20px; /* Add some padding */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Change color on hover */
+nav ul li a:hover {
+    background-color: #575757; /* Darker background on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 600px) {
+    nav ul li {
+        float: none; /* Stack items vertically */
+        width: 100%; /* Full width */
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    background-color: black; /* Set background color */
+    color: white; /* Set text color */
+}
+
+
+.form-container {
+    margin-top: 89px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 590px;
+    text-align: -webkit-auto;
+}
+
+h1 {
+    text-align: center; /* Center the heading */
+    color: #ffffff; /* Set heading color */
+}
+
+label {
+    margin-top: 10px; /* Space above labels */
+}
+
+select {
+    width: 100%; /* Make select boxes full width */
+    padding: 8px; /* Add padding to select boxes */
+    margin-top: 5px; /* Space above select boxes */
+    margin-bottom: 15px; /* Space below select boxes */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border for select boxes */
+}
+
+button {
+    width: 100%; /* Make button full width */
+    padding: 10px;
+    background-color: rgb(25, 16, 53); /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Increase button text size */
+}
+
+button:hover {
+    background-color: rgb(69, 68, 68); /* Change color on hover */
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzed Water Usage Pattern</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='analytics.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a href="/">Home</a></li>
+            <li class="navbar"><a href="/forecast">Forecast</a></li>
+            <li class="navbar"><a href="/reservoirs">Reservoirs</a></li>
+            <li class="navbar"><a href="/footprint">Footprint</a></li>
+            <li class="navbar"><a href="/analytics">Analytics</a></li>
+           
+        </ul>
+    </nav>
+    
+    <h1 class="heading">Water Usage Analysis</h1>
+<div class="graph-container">
+    <img id="water-usage-graph" src="" alt="Water Usage Graph" class="graph-img">
+</div>
+<!-- Assuming you have a canvas or an element for the graph -->
+<canvas id="waterUsageGraph"></canvas>
+
+
+<button id="analyzeButton" class="button" onclick="connectReservoir()">Generate Report with AI</button>
+
+
+
+
+
+<!-- Div for displaying the suggestions and report -->
+<div id="report-container" style="font-size: 18px;
+margin-top: 132px;
+margin-left: 263px;
+margin-right: 263px;margin-bottom: 30px;"></div>
+
+
+
+
+
+<script>
+
+function connectReservoir() {
+            window.location.href = '/report';
+        }
+
+
+function redirectToReport() {
+        // Collect data from the form inputs
+        const data = {
+            january: document.getElementById("january").value,
+            february: document.getElementById("february").value,
+            march: document.getElementById("march").value,
+            april: document.getElementById("april").value,
+            may: document.getElementById("may").value,
+            june: document.getElementById("june").value,
+            july: document.getElementById("july").value,
+            august: document.getElementById("august").value,
+            september: document.getElementById("september").value,
+            october: document.getElementById("october").value,
+            november: document.getElementById("november").value,
+            december: document.getElementById("december").value,
+        };
+
+        // Redirect to report.html and pass data as URL parameters
+        const params = new URLSearchParams(data).toString();
+        window.location.href = `report.html?${params}`;
+    }
+    
+    function analyzeGraphData() {
+            // Redirect to the report page
+            window.location.href = "report.html"; // Adjust the path if necessary
+        }
+    window.onload = function() {
+        const graph = localStorage.getItem('waterUsageGraph');
+        if (graph) {
+            document.getElementById('water-usage-graph').src = 'data:image/png;base64,' + graph;
+        } else {
+            alert('No graph data found');
+        }
+    }
+
+    function analyzeGraphData() {
+    // Assuming you have a Chart.js instance named 'chart'
+    const chartData = chart.data.datasets[0].data; 
+
+    // Send the data to the backend for analysis
+    fetch('/chatbot-analysis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            jan: chartData[0],
+            feb: chartData[1],
+            mar: chartData[2],
+            apr: chartData[3],
+            may: chartData[4],
+            jun: chartData[5],
+            jul: chartData[6],
+            aug: chartData[7],
+            sept: chartData[8],
+            oct: chartData[9],
+            nov: chartData[10],
+            dec: chartData[11]
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display suggestions returned from the backend
+        document.getElementById('suggestions').innerText = data.suggestions;
+    })
+    .catch(err => {
+        console.error('Error:', err);
+    });
+
+    function getChatbotAnalysis() {
+    const data = {
+        jan: document.getElementById('jan').value,
+        feb: document.getElementById('feb').value,
+        mar: document.getElementById('mar').value,
+        apr: document.getElementById('apr').value,
+        may: document.getElementById('may').value,
+        jun: document.getElementById('jun').value,
+        jul: document.getElementById('jul').value,
+        aug: document.getElementById('aug').value,
+        sept: document.getElementById('sept').value,
+        oct: document.getElementById('oct').value,
+        nov: document.getElementById('nov').value,
+        dec: document.getElementById('dec').value
+    };
+
+    fetch('/chatbot-analysis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display the report
+        document.getElementById('report-output').textContent = data.report;
+
+        // Display the suggestions (optional)
+        alert(data.suggestions);
+
+        // Update the chart with graphData
+        updateChart(data.graphData);
+    })
+    .catch(err => console.error('Error:', err));
+}
+
+}
+
+function analyzeGraphData() {
+    const chartData = [10, 20, 15, 30, 25, 35, 40, 45, 50, 55, 60, 65]; // Example chart data
+
+    console.log("Sending data to backend:", chartData);  // Debugging step to see the data being sent
+
+    // Send data to the backend for analysis
+    fetch('/generate-water-usage-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            jan: chartData[0],
+            feb: chartData[1],
+            mar: chartData[2],
+            apr: chartData[3],
+            may: chartData[4],
+            jun: chartData[5],
+            jul: chartData[6],
+            aug: chartData[7],
+            sept: chartData[8],
+            oct: chartData[9],
+            nov: chartData[10],
+            dec: chartData[11]
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Backend response:", data);  // Debugging step to see the backend response
+
+        if (data.success) {
+            // Display the report and suggestions below the button
+            const reportContainer = document.getElementById('report-container');
+            reportContainer.innerHTML = `
+                <h3>AI Generated Water Usage Report</h3>
+                <p>${data.report}</p>
+                <h4>Suggestions</h4>
+                <p>${data.suggestions}</p>
+                
+            `;
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+    });
+}
+
+
+</script>
+</body>
+</html>

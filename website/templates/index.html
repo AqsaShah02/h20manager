@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a href="/">Home</a></li>
+            <li class="navbar"><a href="/forecast">Forecast</a></li>
+            <li class="navbar"><a href="/reservoirs">Reservoirs</a></li>
+            <li class="navbar"><a href="/footprint">Footprint</a></li>
+            <li class="navbar"><a href="/analytics">Analytics</a></li>
+            
+            
+        </ul>
+    </nav>
+    
+    <div class="hero-content">
+        <h1>H2O:MANAGER</h1>
+        <div class="features">
+            <p>✓ Reservoir Management</p>
+            <p>✓ Water Footprint</p>
+            <p>✓ Fully Customizable</p>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        {% if session.user_id %}
+            <!-- Show logout button if the user is logged in -->
+            <a href="{{ url_for('logout') }}" class="btn">Log Out <i class="fas fa-sign-out-alt"></i></a>
+        {% else %}
+    
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+        {% endif %}
+        <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+       
+    </div>
+    
+    
+    
+</body>
+</html>

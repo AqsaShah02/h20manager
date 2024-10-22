@@ -1,0 +1,112 @@
+/* Default Home Styles */
+body {
+    background-color: black; /* Fallback color */
+    background-size: cover; /* Cover the entire body */
+    background-position: 50% 6%; /* Center the image shifted down slightly */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    margin: 0; /* Remove default margin */
+    height: 100vh; 
+    font-family: sans-serif;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #000000; /* Background color of the navbar */
+    overflow: hidden; /* Clear floats */
+    font-size: xx-large;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Distribute space evenly */
+}
+
+nav ul li {
+    float: left; /* Align items horizontally */
+}
+
+nav ul li a {
+    display: block; /* Make the entire area clickable */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 14px 20px; /* Add some padding */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Reservoir Box Styles */
+.dashboard {
+    margin-top: 22px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    margin-left: 233px;
+}
+
+.reservoir-card {
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.reservoir-card:hover {
+    transform: translateY(-10px); /* Slight upward movement on hover */
+}
+
+.reservoir-card h3 {
+    color: #0066cc; /* Blue title */
+    margin-bottom: 10px;
+}
+
+.reservoir-status {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.reservoir-bar {
+    position: relative;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.reservoir-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.reservoir-card .active {
+    color: green;
+}
+
+.reservoir-card .inactive {
+    color: red;
+}
+
+.reservoir-bar span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='forecast.css') }}">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li class="navbar"><a href="/">Home</a></li>
+            <li class="navbar"><a href="/forecast">Forecast</a></li>
+            <li class="navbar"><a href="/reservoirs">Reservoirs</a></li>
+            <li class="navbar"><a href="/footprint">Footprint</a></li>
+            <li class="navbar"><a href="/analytics">Analytics</a></li>
+        </ul>
+    </nav>
+    
+    
+    <div class="form-container">
+        <h1>Farmers Requirement Prediction </h1>
+
+        {% if prediction %}
+            <p>Predicted Water Requirement (Liters per hectare): {{ prediction }} liters</p>
+        {% endif %}
+        
+
+        <form method="POST">
+            <label for="crop">Crop:</label>
+            <select id="crop" name="crop">
+                <option value="BANANA">Banana</option>
+                <option value="SOYABEAN">Soyabean</option>
+                <option value="CABBAGE">Cabbage</option>
+                <option value="POTATO">Potato</option>
+                <option value="RICE">Rice</option>
+                <option value="MELON">Melon</option>
+                <option value="MAIZE">Maize</option>
+                <option value="CITRUS">Citrus</option>
+                <option value="BEAN">Bean</option>
+                <option value="WHEAT">Wheat</option>
+                <option value="MUSTARD">Mustard</option>
+                <option value="COTTON">Cotton</option>
+                <option value="SUGARCANE">Sugarcane</option>
+                <option value="TOMATO">Tomato</option>
+                <option value="ONION">Onion</option>
+            </select>
+
+            <label for="soil">Soil Type:</label>
+            <select id="soil" name="soil">
+                <option value="DRY">Dry</option>
+                <option value="WET">Wet</option>
+                <option value="HUMID">Humid</option>
+            </select>
+
+            <label for="region">Region:</label>
+            <select id="region" name="region">
+                <option value="HUMID">Humid</option>
+                <option value="SEMI ARID">Semi Arid</option>
+                <option value="DESERT">Desert</option>
+                <option value="SEMI HUMID">Semi Humid</option>
+            </select>
+
+            <label for="temperature">Temperature (°C):</label>
+            <select id="temperature" name="temperature">
+                <option value="10-20">10-20°C</option>
+                <option value="20-30">20-30°C</option>
+                <option value="30-40">30-40°C</option>
+                <option value="40-50">40-50°C</option>
+            </select>
+
+            <label for="weather">Weather Condition:</label>
+            <select id="weather" name="weather">
+                <option value="NORMAL">Normal</option>
+                <option value="SUNNY">Sunny</option>
+                <option value="WINDY">Windy</option>
+                <option value="RAINY">Rainy</option>
+            </select>
+
+            <button type="submit">Check</button>
+        </form>
+    </div>
+
+
+</body>
+</html>

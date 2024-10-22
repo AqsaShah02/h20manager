@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tank1.css') }}">
+</head>
+<body>
+
+    <button id="back-btn" onclick="window.history.back();">Back</button>
+
+    <h1>Water Tank01 Monitor</h1>
+
+    <div id="tank-container">
+        
+        <div id="tank">
+            <div id="water" style="height: 0%;"></div>
+        </div>
+        <div class="tank-info">
+            <h2>Tank Information</h2>
+            <div class="parameter"><span>Total Capacity:</span> 5000L</div>
+            <div class="parameter"><span>Current Water Level:</span> <span id="current-level">0L</span></div>
+            <div class="parameter"><span>Water Level:</span> <span id="water-level">0%</span></div>
+            <div class="parameter"><span>Status:</span> <span id="tank-status" class="status">Empty</span></div>
+            <button id="connect-btn">Connect to Tank</button>
+    <div id="message"></div>
+        </div>
+    </div>
+
+    
+    <script>
+        document.getElementById('connect-btn').addEventListener('click', function() {
+            fetch('/connect-tank', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageDiv = document.getElementById('message');
+                messageDiv.innerText = data.message;
+                if (data.success) {
+                    // Continuously fetch sensor data from the server
+                    setInterval(fetchSensorData, 1000);
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'Error: ' + error;
+            });
+        });
+
+        function fetchSensorData() {
+            fetch('/get-sensor-data')
+            .then(response => response.json())
+            .then(data => {
+                const waterLevel = Math.min(parseInt(data.sensor_value), 100); // Cap water level to 100
+                updateTankLevel(waterLevel);
+            })
+            .catch(error => {
+                console.error('Error fetching sensor data:', error);
+            });
+        }
+
+        function updateTankLevel(level) {
+            const maxLevel = 100;  // Cap the level to 100%
+            const waterHeight = (level / maxLevel) * 100; // Calculate water height percentage
+            const waterElement = document.getElementById('water');
+            const currentLevelElement = document.getElementById('current-level');
+            const waterLevelElement = document.getElementById('water-level');
+            const tankStatusElement = document.getElementById('tank-status');
+
+            waterElement.style.height = waterHeight + '%';
+            currentLevelElement.textContent = (waterHeight * 50).toFixed(0) + 'L'; // Calculate current water in Liters
+            waterLevelElement.textContent = waterHeight.toFixed(2) + '%';
+
+            if (waterHeight === 0) {
+                tankStatusElement.textContent = 'Empty';
+            } else if (waterHeight === 100) {
+                tankStatusElement.textContent = 'Full';
+            } else {
+                tankStatusElement.textContent = 'Partially Filled';
+            }
+        }
+    </script>
+
+</body>
+</html>

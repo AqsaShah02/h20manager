@@ -1,0 +1,86 @@
+/*home*/
+body {
+  background-color: white; /* Fallback color */
+ /* Relative path to background image */
+  background-size: cover; /* Cover the entire body */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  margin: 0; /* Remove default margin */
+  height: 100vh; 
+  background-position: top left; /* Shows the top-left corner */
+  background-position: 50% 6%; /* Shows the center of the image shifted down slightly */
+  font-family: sans-serif;}
+
+/* Navigation Bar Styles */
+nav {
+background-color: #000000; /* Background color of the navbar */
+overflow: hidden; /* Clear floats */
+font-size: xx-large;
+width: 100%;
+}
+
+nav ul {
+list-style-type: none; /* Remove bullet points */
+margin: 0; /* Remove default margin */
+padding: 0; 
+display: flex;
+align-items: center;
+justify-content: space-around;/* Remove default padding */
+}
+
+nav ul li {
+float: left; /* Align items horizontally */
+}
+
+nav ul li a {
+display: block; /* Make the entire area clickable */
+color: white; /* Text color */
+text-align: center; /* Center the text */
+padding: 14px 20px; /* Add some padding */
+text-decoration: none; /* Remove underline */
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.graph-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.graph-img {
+  width: 43%;
+  border: 2px solid white;
+}
+
+.heading{
+  text-align: center;
+}
+
+button#analyzeButton {
+  background-color: #333; /* Dark grey background */
+  background-color: #333;
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 25px;
+    padding: 29px 51px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 268px;
+    margin-top: 33px;
+}
+
+button#analyzeButton:hover {
+  background-color: #555; /* Change background on hover */
+  color: #e0e0e0; /* Lighter text on hover */
+  border-color: #777; /* Slightly lighter border */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+  transform: translateY(-2px); /* Slight upward movement on hover */
+}

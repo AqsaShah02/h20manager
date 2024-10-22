@@ -27,9 +27,10 @@ model = ModelFactory.get("6414bd3cd09663e9225130e8")  # Replace with your aiXpla
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/h20manager"  # Database name: h20manager
-import os
-app.config['SECRET_KEY'] = os.urandom(24)  # Generates a random 24-byte key
+app.config["MONGO_URI"] = "mongodb://aqsashah:mariyak439#@localhost:27017/h20manager"
+
+app.config['SECRET_KEY'] = "h!3K$s1#m2@aF1%PnJ8&X#4zL@qR!"
+  # Generates a random 24-byte key
 
 mongo = PyMongo(app)
 
